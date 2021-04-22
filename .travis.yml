@@ -9,4 +9,5 @@ before_install:
  - gem install bundler:2.2.11
 
 script:
+ - curl -sL https://deb.nodesource.com/setup_10.x | bash -
  - bundle exec rspec
