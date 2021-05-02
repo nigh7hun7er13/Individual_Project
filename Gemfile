@@ -42,6 +42,7 @@ gem 'friendly_id', '~> 5.4.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'mini_racer'
+gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -70,6 +71,8 @@ group :test do
   gem 'chromedriver-helper'
   gem 'sqlite3'
   gem 'simplecov', require: false
+
+  gem 'factory_bot_rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

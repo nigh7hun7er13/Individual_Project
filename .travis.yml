@@ -9,5 +9,12 @@ before_install:
  - gem install bundler:2.2.11
 
 script:
-# - curl -sL https://deb.nodesource.com/setup_10.x | bash -
  - bundle exec rspec
+ 
+deploy:
+ provider: heroku
+ api_key: 8480bc9d-ae36-4942-ba7b-ac8c02d95d43
+ app: quiet-hamlet-77893
+ run: "rake db:migrate"
+ on:
+  all_branches: true
