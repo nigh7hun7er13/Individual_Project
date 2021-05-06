@@ -71,7 +71,6 @@ group :test do
   gem 'chromedriver-helper'
   gem 'sqlite3'
   gem 'simplecov', require: false
-
   gem 'factory_bot_rails'
 end
 

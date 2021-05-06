@@ -6,10 +6,18 @@ require File.expand_path('../config/environment', __dir__)
 
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
+
+# Add additional requires below this line. Rails is not loaded until this point!
+require 'simplecov'
+SimpleCov.start 'rails' do
+  add_filter '/bin/'
+  add_filter '/db/'
+  add_filter '/spec/' # for rspec
+end
+
 require 'rspec/rails'
 require 'devise'
 require_relative 'support/controller_macros'
-# Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -67,11 +75,6 @@ RSpec.configure do |config|
     config.include FactoryBot::Syntax::Methods
     config.extend ControllerMacros, :type => :controller
 
-  require 'simplecov'
-  SimpleCov.start 'rails' do
-    add_filter '/bin/'
-    add_filter '/db/'
-    add_filter '/spec/' # for rspec
-  end
+
 
 end

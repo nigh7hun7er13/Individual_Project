@@ -1,13 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
 
-  before_action :authenticate_user!
-  user_signed_in?
-
-  current_user
-
-  user_session
-
   # GET /posts or /posts.json
   def index
     @posts = Post.all
