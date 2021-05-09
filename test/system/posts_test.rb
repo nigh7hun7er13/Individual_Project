@@ -38,12 +38,12 @@ class PostsTest < ApplicationSystemTestCase
     click_on "Back"
   end
 
-  test "destroying a Post" do
+  test "deleting a Post" do
     visit posts_url
     page.accept_confirm do
       click_on "Destroy", match: :first
     end
 
-    assert_text "Post was successfully destroyed"
+    assert_text "Post was successfully deleted"
   end
 end

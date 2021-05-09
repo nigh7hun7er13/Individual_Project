@@ -1,35 +1,97 @@
-<% provide(:page_title, 'All Posts') %>
+<% provide(:page_title, 'All Projects') %>
 
-<p id="notice"><%= notice %></p>
+<style>
 
-<h1>Posts</h1>
+    .table {
+      padding: 20px;
+    }
+    
+    .addpost {
+      padding: 10px;
+    }
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th>Description</th>
-      <th>Slug</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    .spacer {
+      padding: 50px;
+    }
+    
+</style>
 
-  <tbody>
-    <% @posts.each do |post| %>
+
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+ 
+    <a class="navbar-brand" href="#">Portfolio</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" current="page" href="#">Home</a>
+        <a class="nav-link" href="#">Create Account</a>
+        <a class="nav-link" href="#">Login</a>
+      </div>
+    </div>
+    
+    <p class="navbar-text float-right">
+      <% if user_signed_in? %>
+        Logged in as <strong><%= current_user.email %></strong>.
+        <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+      <% else %>
+        <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+        <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+      <% end %>
+      </p>
+
+</nav>
+
+
+<div class="jumbotron bg-light">
+  <h1 class="display-4">Deidre's Portfolio</h1>
+    <p class="lead">This is my online portfolio for showcasing some of my projects.</p>
+    <hr class="my-4">
+    <p>Select a project from the list below.</p>
+</div>
+
+<div class="projects text-dark bg-white text-center">
+  <h2>Projects List</h2>
+</div>
+
+<div class="table text-dark float-left">
+  <table>
+
+    <thead>
       <tr>
-        <td><%= post.title %></td>
-        <td><%= post.body %></td>
-        <td><%= post.description %></td>
-        <td><%= post.slug %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Project Name</th>
+        <th>Project Type</th>
+        <th>Project Description</th>
+        <th></th>
+        <th colspan="3">Actions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    </thead>
+
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.title %></td>
+          <td><%= post.body %></td>
+          <td><%= post.description %></td>
+          <td><%= post.slug %></td>
+          <td><%= link_to 'Show', post %></td>
+          <td><%= link_to 'Edit', edit_post_path(post) %></td>
+          <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+       </tr>
+     <% end %>
+    </tbody>
+
+  </table>
+</div>
 
 <br>
 
-<%= link_to 'New Post', new_post_path %>
+<p class="addpost float-right">
+<%= link_to 'Add Post', new_post_path %>
+</p>
+

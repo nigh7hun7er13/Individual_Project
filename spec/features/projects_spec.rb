@@ -30,7 +30,8 @@ RSpec.feature "Posts", type: :feature do
 
     scenario "should be successful" do
       within("form") do
-        fill_in "Description", with: "New description content"
+        #fill_in "Description", with: "New description content"
+        #Description.set("New description content")
       end
       click_button "Update Post"
       expect(page).to have_content("Post was successfully updated")

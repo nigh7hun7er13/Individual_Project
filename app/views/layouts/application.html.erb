@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= yield(:page_title) %> | IndividualProject</title>
+    <title><%= yield(:page_title) %> | Deidre's Portfolio</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -9,6 +9,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <div class="container"> 
   <body>
   <% if notice %>
   <p class="alert alert-success"><%= notice %></p>
@@ -27,7 +28,9 @@
   <% end %>
   </p>
 
+
   <% end %>
     <%= yield %> 
   </body>
+  </div>
 </html>
